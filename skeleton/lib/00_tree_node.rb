@@ -41,7 +41,33 @@ class PolyTreeNode
     @children.delete(node)
   end
   
-  
+  def dfs(target_value)
+    storage = []
+    print storage
+    return self if @value == target_value
+    
+
+    
+    
+    unless @children.nil?
+      #stores into storage aka stack
+      @children.each do |child|
+        child.value
+        storage.push(child.dfs(target_value))
+      end
+    end
+    
+    if @value != target_value
+      storage.pop
+      return nil
+    end
+    
+    
+    # unless value == target_value
+    #   storage.pop
+    #   return nil
+    # end
+  end
   
 end
 
